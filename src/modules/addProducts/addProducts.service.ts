@@ -4,7 +4,7 @@ import { AddProduct } from "./addProducts.model"
 
 
 const createProduct = async(payload:TAddProduct) =>{
-    console.log(payload)
+    // console.log(payload)
 
     const isProductExist = await AddProduct.findOne({title:payload.title})
     if(isProductExist){
