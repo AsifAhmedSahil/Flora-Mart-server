@@ -11,7 +11,8 @@ const createAddProductController = catchAsync(async (req, res) => {
 
     const data = {
         ...req.body,
-        isDeleted:false
+        isDeleted:false,
+        instock:true
     }
   
     const result = await addProductServices.createProduct(data);

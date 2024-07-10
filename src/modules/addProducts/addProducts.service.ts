@@ -5,6 +5,11 @@ import { AddProduct } from "./addProducts.model"
 
 const createProduct = async(payload:TAddProduct) =>{
     console.log(payload)
+
+    const isProductExist = await AddProduct.findOne({title:payload.title})
+    if(isProductExist){
+        throw new Error("This Product already exist! ")
+    }
     
     const result =await AddProduct.create(payload)
     return result

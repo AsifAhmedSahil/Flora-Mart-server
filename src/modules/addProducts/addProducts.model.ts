@@ -26,7 +26,15 @@ const productModel = new Schema<TAddProduct>({
         type: String,
         required: [true,"category is required"]
     },
+    description:{
+        type: String,
+        required: [true,"description is required"]
+    },
     isDeleted:{
+        type:Boolean
+
+    },
+    instock:{
         type:Boolean
 
     }
