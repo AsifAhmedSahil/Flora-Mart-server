@@ -8,8 +8,13 @@ import { addProductServices } from "./addProducts.service";
 
 
 const createAddProductController = catchAsync(async (req, res) => {
+
+    const data = {
+        ...req.body,
+        isDeleted:false
+    }
   
-    const result = await addProductServices.createProduct(req.body);
+    const result = await addProductServices.createProduct(data);
 
     res.status(200).json({
       success: true,

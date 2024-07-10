@@ -4,5 +4,6 @@ export interface TAddProduct {
     rating:number,
     quantity:number,
     image:string,
-    category:string
+    category:string,
+    isDeleted?:boolean
 }

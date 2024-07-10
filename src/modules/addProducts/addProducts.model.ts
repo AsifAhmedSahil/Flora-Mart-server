@@ -26,6 +26,10 @@ const productModel = new Schema<TAddProduct>({
         type: String,
         required: [true,"category is required"]
     },
+    isDeleted:{
+        type:Boolean
+
+    }
 })
 
 export const AddProduct = model<TAddProduct>("AddProduct",productModel)

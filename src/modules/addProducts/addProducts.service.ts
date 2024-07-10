@@ -4,6 +4,7 @@ import { AddProduct } from "./addProducts.model"
 
 const createProduct = async(payload:TAddProduct) =>{
     console.log(payload)
+    
     const result =await AddProduct.create(payload)
     return result
 
