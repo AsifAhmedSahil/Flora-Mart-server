@@ -2,9 +2,9 @@ import { model, Schema } from "mongoose";
 import { TAddProduct } from "./addProducts.interface";
 
 const productModel = new Schema<TAddProduct>({
-    name:{
+    title:{
         type: String,
-        required: [true,"name is required"]
+        required: [true,"title is required"]
     },
     price:{
         type: Number,
@@ -21,6 +21,10 @@ const productModel = new Schema<TAddProduct>({
     image:{
         type: String,
         required: [true,"image is required"]
+    },
+    category:{
+        type: String,
+        required: [true,"category is required"]
     },
 })
 

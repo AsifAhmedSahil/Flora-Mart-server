@@ -1,7 +1,8 @@
 export interface TAddProduct {
-    name:string,
+    title:string,
     price:number,
     rating:number,
     quantity:number,
-    image:string
+    image:string,
+    category:string
 }

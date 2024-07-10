@@ -14,7 +14,19 @@ const createAddProductController = catchAsync(async (req, res) => {
     res.status(200).json({
       success: true,
       statusCode: 200,
-      message: "Booking created successfully",
+      message: "product created successfully",
+      data: result,
+    });
+});
+
+const getProductController = catchAsync(async (req, res) => {
+  
+    const result = await addProductServices.getAllProduct();
+
+    res.status(200).json({
+      success: true,
+      statusCode: 200,
+      message: "All Product retrived successfully",
       data: result,
     });
 });
@@ -25,5 +37,6 @@ const createAddProductController = catchAsync(async (req, res) => {
 
 export const addProductControllers = {
     createAddProductController,
+    getProductController
   
 };
