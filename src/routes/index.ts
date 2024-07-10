@@ -3,6 +3,7 @@ import { Router } from "express";
 
 
 import { addProductRoute } from "../modules/addProducts/addProducts.route";
+import { orderInfoRoute } from "../modules/orderInfo/orderInfo.route";
 
 
 
@@ -15,6 +16,10 @@ const middleRoute = [
     {
         path:"/addProduct",
         route: addProductRoute
+    },
+    {
+        path:"/order",
+        route: orderInfoRoute
     },
     // {
     //     path:"/",
