@@ -35,6 +35,19 @@ const getProductController = catchAsync(async (req, res) => {
       data: result,
     });
 });
+const getProductByIdController = catchAsync(async (req, res) => {
+
+    const {productId} = req.params;
+  
+    const result = await addProductServices.getProductById(productId);
+
+    res.status(200).json({
+      success: true,
+      statusCode: 200,
+      message: "All Product retrived successfully",
+      data: result,
+    });
+});
 
 
 
@@ -42,6 +55,7 @@ const getProductController = catchAsync(async (req, res) => {
 
 export const addProductControllers = {
     createAddProductController,
-    getProductController
+    getProductController,
+    getProductByIdController
   
 };
