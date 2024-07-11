@@ -14,7 +14,7 @@ const middleRoute = [
     
     
     {
-        path:"/addProduct",
+        path:"/products",
         route: addProductRoute
     },
     {

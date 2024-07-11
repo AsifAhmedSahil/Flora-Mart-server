@@ -5,6 +5,7 @@ export interface TAddProduct {
     quantity:number,
     image:string,
     category:string,
+    categoryID?:string,
     description:string,
     isDeleted?:boolean,
     instock?:boolean

@@ -26,6 +26,10 @@ const productModel = new Schema<TAddProduct>({
         type: String,
         required: [true,"category is required"]
     },
+    categoryID:{
+        type: String,
+        
+    },
     description:{
         type: String,
         required: [true,"description is required"]

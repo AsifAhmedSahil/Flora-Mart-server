@@ -17,6 +17,8 @@ const createProduct = async(payload:TAddProduct) =>{
 }
 const getAllProduct = async() =>{
     
+     
+    
     const result =await AddProduct.find()
     return result
 
@@ -27,6 +29,22 @@ const getProductById = async(id:string) =>{
     return result
 
 }
+const getProductByCategory = async(category:string) =>{
+    console.log("category from service",category)
+    
+    // const result =await AddProduct.findOne({category:category})
+    // return result
+
+}
+
+// const getProductByCategory = async (category: string): Promise<TAddProduct[]> => {
+//     const trimmedCategory = category.trim();
+//     const regex = new RegExp(trimmedCategory, 'i'); // Case-insensitive search
+  
+//     const result = await AddProduct.find({ category: regex });
+//     return result;
+//   };
+
 const deleteProductById = async(id:string) =>{
     
     const result =await AddProduct.findByIdAndDelete(id)
@@ -45,6 +63,7 @@ export const addProductServices = {
     getAllProduct,
     getProductById,
     updateProductById,
-    deleteProductById
+    deleteProductById,
+    getProductByCategory
     
 }
