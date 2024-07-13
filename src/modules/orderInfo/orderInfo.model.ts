@@ -22,6 +22,7 @@ const orderInfoModel = new Schema<TOrderInfo>({
         type:String,
         required:[true,"address is required"]
     },
+    
 })
 
-export const OrdeInfo = model<TOrderInfo>("OrdeInfo",orderInfoModel)
+export const OrderInfo = model<TOrderInfo>("OrderInfo",orderInfoModel)

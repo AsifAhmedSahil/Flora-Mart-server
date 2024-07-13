@@ -1,5 +1,5 @@
 import { TOrderInfo } from "./orderInfo.interface"
-import { OrdeInfo } from "./orderInfo.model"
+import { OrderInfo } from "./orderInfo.model"
 
 
 const createOrderInfo = async(payload:TOrderInfo) =>{
@@ -7,7 +7,7 @@ const createOrderInfo = async(payload:TOrderInfo) =>{
 
     
     
-    const result =await OrdeInfo.create(payload)
+    const result =await OrderInfo.create(payload)
     return result
 
 }

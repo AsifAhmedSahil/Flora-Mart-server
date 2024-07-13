@@ -15,14 +15,27 @@ const createProduct = async(payload:TAddProduct) =>{
     return result
 
 }
-const getAllProduct = async() =>{
+// const getAllProduct = async() =>{
     
      
     
-    const result =await AddProduct.find()
-    return result
+//     const result =await AddProduct.find()
+//     return result
 
-}
+// }
+
+// category based test
+const getAllProduct = async (category: string) => {
+    console.log(category)
+    const query = {};
+    console.log(query.category)
+    if (category) {
+      query.category = category;
+    }
+    const result = await AddProduct.find(query); // Adjust this according to your database model
+    return result;
+  }
+
 const getProductById = async(id:string) =>{
     
     const result =await AddProduct.findById(id)

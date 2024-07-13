@@ -1,5 +1,6 @@
 
 
+import { string } from "zod";
 import catchAsync from "../../utils/catchAsync";
 import { AddProduct } from "./addProducts.model";
 
@@ -30,18 +31,17 @@ const createAddProductController = catchAsync(async (req, res) => {
 });
 
 const getProductController = catchAsync(async (req, res) => {
+  const { category } = req.query;
+  // console.log(category)
 
- 
-  
-  
-    const result = await addProductServices.getAllProduct();
+  const result = await addProductServices.getAllProduct(category );
 
-    res.status(200).json({
-      success: true,
-      statusCode: 200,
-      message: "All Product retrived successfully",
-      data: result,
-    });
+  res.status(200).json({
+    success: true,
+    statusCode: 200,
+    message: "All Products retrieved successfully",
+    data: result,
+  });
 });
 const getProductByCategoryController = catchAsync(async (req, res) => {
 
