@@ -7,7 +7,7 @@ import { AddProduct } from "../addProducts/addProducts.model";
 
 
 const createOrderInfo = async(payload:TOrderInfo) =>{
-    console.log(payload)
+    console.log(payload )
     
     
 
@@ -23,7 +23,10 @@ for (const product of payload.products) {
         console.log(number)
         const existingProduct = await AddProduct.findById(productId).session(session)
         console.log(existingProduct?.quantity)
-        existingProduct?.quantity -=  number
+        if (existingProduct && existingProduct.quantity !== undefined && existingProduct.quantity > number) {
+            existingProduct.quantity -= number;
+        }
+        
 
 
         await existingProduct?.save({ session });
@@ -41,6 +44,7 @@ for (const product of payload.products) {
         await session.abortTransaction();
         session.endSession();
         console.log(error)
+        
         
     }
   

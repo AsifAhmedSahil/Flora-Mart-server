@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddProduct = void 0;
 const mongoose_1 = require("mongoose");
 const productModel = new mongoose_1.Schema({
-    name: {
+    title: {
         type: String,
-        required: [true, "name is required"]
+        required: [true, "title is required"]
     },
     price: {
         type: Number,
@@ -23,5 +23,22 @@ const productModel = new mongoose_1.Schema({
         type: String,
         required: [true, "image is required"]
     },
+    category: {
+        type: String,
+        required: [true, "category is required"]
+    },
+    categoryID: {
+        type: String,
+    },
+    description: {
+        type: String,
+        required: [true, "description is required"]
+    },
+    isDeleted: {
+        type: Boolean
+    },
+    instock: {
+        type: Boolean
+    }
 });
 exports.AddProduct = (0, mongoose_1.model)("AddProduct", productModel);

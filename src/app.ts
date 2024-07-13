@@ -12,7 +12,7 @@ app.use("/api",router)
 
 
 app.get('/', (req:Request, res:Response) => {
-  res.send('Welcome to the project - Sports Facility Booking Platform')
+  res.send('Welcome to the project - FloraMart Server')
 })
 
 

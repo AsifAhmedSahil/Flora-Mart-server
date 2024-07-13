@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 
 
@@ -5,8 +6,11 @@ import catchAsync from "../../utils/catchAsync";
 
 import { addProductServices } from "./addProducts.service";
 
-
-
+type TSearch = {
+  category?:string,
+  sortName?:string,
+  search?:string
+}
 
 
 
@@ -94,10 +98,10 @@ const createAddProductController = catchAsync(async (req, res) => {
 // });
 
 const getProductController = catchAsync(async (req, res) => {
-  const { category, sortName, search } = req.query;
+  const { category, sortName, search }:TSearch = req.query as TSearch;
   console.log(category, sortName, search);
 
-  let query = {};
+  let query:any = {};
 
   if(category === 'all'){
     query = {}

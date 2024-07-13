@@ -36,7 +36,7 @@ const createProduct = async(payload:TAddProduct) =>{
 //     return result;
 //   }
 
-const getAllProduct = async (query, sortOptions) => {
+const getAllProduct = async (query:any, sortOptions:any) => {
     const result = await AddProduct.find(query).sort(sortOptions); 
 
     console.log(query , sortOptions)

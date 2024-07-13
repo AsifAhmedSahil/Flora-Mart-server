@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface TOrderInfo {
     firstname:string,
@@ -5,7 +6,8 @@ export interface TOrderInfo {
     email:string,
     number:string,
     address:string,
-    payment:string
+    payment:string,
+    products: any[];
     
 
 }
