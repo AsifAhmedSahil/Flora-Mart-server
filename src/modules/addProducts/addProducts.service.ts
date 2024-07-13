@@ -35,10 +35,18 @@ const createProduct = async(payload:TAddProduct) =>{
 //     const result = await AddProduct.find(query).sort(sort); // Adjust this according to your database model
 //     return result;
 //   }
+
 const getAllProduct = async (query, sortOptions) => {
-    const result = await AddProduct.find(query).sort(sortOptions); // Adjust this according to your database model and schema
-    return result;
+    const result = await AddProduct.find(query).sort(sortOptions); 
+
+    console.log(query , sortOptions)
+    return result
   };
+
+  
+ 
+  
+  
 
 const getProductById = async(id:string) =>{
     

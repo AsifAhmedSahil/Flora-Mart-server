@@ -1,12 +1,13 @@
 
 
-import { string } from "zod";
+
 import catchAsync from "../../utils/catchAsync";
-import { AddProduct } from "./addProducts.model";
-
-
 
 import { addProductServices } from "./addProducts.service";
+
+
+
+
 
 
 const createAddProductController = catchAsync(async (req, res) => {
@@ -44,21 +45,88 @@ const createAddProductController = catchAsync(async (req, res) => {
 //   });
 // });
 
-const getProductController = catchAsync(async (req, res) => {
-  const { category, sort ,search } = req.query;
-  console.log(category,sort,search)
-  const query = {};
 
-  if (category) {
+
+
+// const getProductController = catchAsync(async (req, res) => {
+//   const { category, sortName ,search } = req.query;
+//   console.log(category,sortName,search)
+//   const query = {};
+
+//   if (category) {
+//     query.category = category;
+//   }
+
+//   let sortOptions = {};
+
+//   if (sortName === 'asc') {
+//     sortOptions = { title: 1 }; // Sort by title in ascending order
+//   } else if (sortName === 'desc') {
+//     sortOptions = { title: -1 }; // Sort by title in descending order
+//   }
+
+//   // if (sortPrice === 'high') {
+//   //   sortOptions = { price: 1 }; // Sort by title in ascending order
+//   // }else if (sortPrice === 'low') {
+//   //   sortOptions = { title: -1 }; // Sort by title in ascending order
+//   // }
+
+
+//   if (search) {
+//     // Split search string into individual words
+//     const searchWords = search.split(' ');
+
+//     // Construct regex pattern to match the exact phrase (all words in sequence)
+//     const regexPattern = searchWords.map(word => `(?=.*${word})`).join('');
+
+//     // Add search functionality with regex pattern
+//     query.title = { $regex: regexPattern, $options: 'i' }; // Case-insensitive search
+//   }
+
+//   const result = await addProductServices.getAllProduct(query, sortOptions);
+
+//   res.status(200).json({
+//     success: true,
+//     statusCode: 200,
+//     message: "All Products retrieved successfully",
+//     data: result,
+//   });
+// });
+
+const getProductController = catchAsync(async (req, res) => {
+  const { category, sortName, search } = req.query;
+  console.log(category, sortName, search);
+
+  let query = {};
+
+  if(category === 'all'){
+    query = {}
+  }
+  else if(category) {
     query.category = category;
   }
 
   let sortOptions = {};
 
-  if (sort === 'asc') {
-    sortOptions = { title: 1 }; // Sort by title in ascending order
-  } else if (sort === 'desc') {
-    sortOptions = { title: -1 }; // Sort by title in descending order
+  switch (sortName) {
+    case 'asc':
+      sortOptions = { title: 1 }; // Sort by title in ascending order
+      break;
+    case 'desc':
+      sortOptions = { title: -1 }; // Sort by title in descending order
+      break;
+    case 'high':
+      sortOptions = { price: -1 }; // Sort by price in descending order (high to low)
+      break;
+    case 'low':
+      sortOptions = { price: 1 }; // Sort by price in ascending order (low to high)
+      break;
+    case 'all':
+      sortOptions = {  }; // Sort by price in ascending order (low to high)
+      break;
+    default:
+      sortOptions = { title: 1 }; // Default sorting by title in ascending order
+      break;
   }
 
   if (search) {
@@ -81,6 +149,56 @@ const getProductController = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
+
+
+
+
+// const getProductController = catchAsync(async (req, res) => {
+//   const { category, sortName, search, sortPrice } = req.query;
+//   console.log(category, sortName, search, sortPrice);
+
+//   const query = {};
+
+//   if (category) {
+//     query.category = category;
+//   }
+
+//   let sortCriteria = {};
+
+//   if (sortName === 'asc') {
+//     sortCriteria.title = 1; // Sort by title in ascending order
+//   } else if (sortName === 'desc') {
+//     sortCriteria.title = -1; // Sort by title in descending order
+//   }
+
+//   if (sortPrice === 'high') {
+//     sortCriteria.price = -1; // Sort by price in descending order (high to low)
+//   } else if (sortPrice === 'low') {
+//     sortCriteria.price = 1; // Sort by price in ascending order (low to high)
+//   }
+
+//   if (search) {
+//     // Split search string into individual words
+//     const searchWords = search.split(' ');
+
+//     // Construct regex pattern to match the exact phrase (all words in sequence)
+//     const regexPattern = searchWords.map(word => `(?=.*${word})`).join('');
+
+//     // Add search functionality with regex pattern
+//     query.title = { $regex: regexPattern, $options: 'i' }; // Case-insensitive search
+//   }
+
+//   const result = await addProductServices.getAllProduct(query, sortCriteria);
+
+//   res.status(200).json({
+//     success: true,
+//     statusCode: 200,
+//     message: "All Products retrieved successfully",
+//     data: result,
+//   });
+// });
+
 
 const getProductByCategoryController = catchAsync(async (req, res) => {
 
