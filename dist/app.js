@@ -8,7 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({ origin: ['http://localhost:5173'], credentials: true }));
+app.use((0, cors_1.default)({ origin: ['https://batch-3-assignemnt-4-floramart-client.vercel.app'], credentials: true }));
 app.use("/api", routes_1.default);
 app.get('/', (req, res) => {
     res.send('Welcome to the project - FloraMart Server');
