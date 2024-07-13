@@ -5,6 +5,7 @@ export interface TOrderInfo {
     email:string,
     number:string,
     address:string,
+    payment:string
     
 
 }

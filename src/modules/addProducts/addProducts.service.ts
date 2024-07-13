@@ -25,16 +25,20 @@ const createProduct = async(payload:TAddProduct) =>{
 // }
 
 // category based test
-const getAllProduct = async (category: string) => {
-    console.log(category)
-    const query = {};
-    console.log(query.category)
-    if (category) {
-      query.category = category;
-    }
-    const result = await AddProduct.find(query); // Adjust this according to your database model
+// const getAllProduct = async (category: string,sort: string) => {
+//     console.log(category,sort,"*********")
+//     const query = {};
+//     console.log(query.category)
+//     if (category) {
+//       query.category = category;
+//     }
+//     const result = await AddProduct.find(query).sort(sort); // Adjust this according to your database model
+//     return result;
+//   }
+const getAllProduct = async (query, sortOptions) => {
+    const result = await AddProduct.find(query).sort(sortOptions); // Adjust this according to your database model and schema
     return result;
-  }
+  };
 
 const getProductById = async(id:string) =>{
     

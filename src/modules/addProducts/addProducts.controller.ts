@@ -30,11 +30,49 @@ const createAddProductController = catchAsync(async (req, res) => {
     });
 });
 
-const getProductController = catchAsync(async (req, res) => {
-  const { category } = req.query;
-  // console.log(category)
+// const getProductController = catchAsync(async (req, res) => {
+//   const { category , sort } = req.query;
+//   console.log(category , sort)
 
-  const result = await addProductServices.getAllProduct(category );
+//   const result = await addProductServices.getAllProduct(category ,sort);
+
+//   res.status(200).json({
+//     success: true,
+//     statusCode: 200,
+//     message: "All Products retrieved successfully",
+//     data: result,
+//   });
+// });
+
+const getProductController = catchAsync(async (req, res) => {
+  const { category, sort ,search } = req.query;
+  console.log(category,sort,search)
+  const query = {};
+
+  if (category) {
+    query.category = category;
+  }
+
+  let sortOptions = {};
+
+  if (sort === 'asc') {
+    sortOptions = { title: 1 }; // Sort by title in ascending order
+  } else if (sort === 'desc') {
+    sortOptions = { title: -1 }; // Sort by title in descending order
+  }
+
+  if (search) {
+    // Split search string into individual words
+    const searchWords = search.split(' ');
+
+    // Construct regex pattern to match the exact phrase (all words in sequence)
+    const regexPattern = searchWords.map(word => `(?=.*${word})`).join('');
+
+    // Add search functionality with regex pattern
+    query.title = { $regex: regexPattern, $options: 'i' }; // Case-insensitive search
+  }
+
+  const result = await addProductServices.getAllProduct(query, sortOptions);
 
   res.status(200).json({
     success: true,
@@ -43,6 +81,7 @@ const getProductController = catchAsync(async (req, res) => {
     data: result,
   });
 });
+
 const getProductByCategoryController = catchAsync(async (req, res) => {
 
  

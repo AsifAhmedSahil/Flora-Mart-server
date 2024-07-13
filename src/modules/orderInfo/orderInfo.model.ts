@@ -22,6 +22,10 @@ const orderInfoModel = new Schema<TOrderInfo>({
         type:String,
         required:[true,"address is required"]
     },
+    payment:{
+        type:String,
+        required:[true,"payment is required"]
+    },
     
 })
 
